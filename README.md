@@ -10,7 +10,7 @@ Film Flickster is a web application that allows users to discover and explore mo
 - Search for movies and TV shows by title, genre, or keyword.
 - Stay up-to-date with trending content.
 
-## 🚀Checkout my Website - https://flim-flickster.netlify.app/
+## 🚀 Checkout my Website - https://film-flickster.netlify.app/
 
 ## Screenshots
 
@@ -42,37 +42,43 @@ Before you begin, ensure you have met the following requirements:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/film-flickster.git
+   git clone https://github.com/hamse47/film-flickster.git
+   ```
 
 2. Navigate to the project directory:
-   ```bash 
-     cd film-flickster
 
+   ```bash
+   cd film-flickster
+   ```
 
-Install the project dependencies:
-    ```bash
-      npm install ```
+3. Install the project dependencies:
 
+   ```bash
+   npm install
+   ```
 
-Start the development server:
-  ```bash
-    npm start
-```
+4. Start the development server:
 
-Usage
-Browse through movies and TV shows.
-Click on a movie to view more details.
-Use the search feature to find specific movies or TV shows.
-Watch trailers by clicking on the "Watch Trailer" button.
-Contributing
+   ```bash
+   npm start
+   ```
+
+## Usage
+
+- Browse through movies and TV shows.
+- Click on a movie to view more details.
+- Use the search feature to find specific movies or TV shows.
+- Watch trailers by clicking on the "Watch Trailer" button.
+
+## Contributing
 
 Contributions are welcome! Feel free to open issues or submit pull requests to help improve this project.
 
-License
+## License
 
 This project is licensed under the MIT License. See the LICENSE.md file for details.
 
-Acknowledgments
+## Acknowledgments
 
 This project was inspired by a passion for movies and web development.
 Thanks to The Movie Database (TMDb) for providing the API.
