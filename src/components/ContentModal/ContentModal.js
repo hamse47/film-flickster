@@ -154,6 +154,7 @@ export default function ContentModal({ children, media_type, id }) {
                     startIcon={<YouTubeIcon />}
                     color="secondary"
                     target="_blank"
+                    rel="noopener noreferrer"
                     href={`https://www.youtube.com/watch?v=${video}`}
                   >
                     Watch the Trailer
