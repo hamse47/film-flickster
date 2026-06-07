@@ -16,7 +16,7 @@ const Carousel = ({ id, media_type }) => {
 
   // Create an array of JSX elements representing cast/credits
   const items = credits.map((c) => (
-    <div className="carouselItem">
+    <div className="carouselItem" key={c.credit_id}>
       <img
         src={c.profile_path ? `${img_300}/${c.profile_path}` : noPicture} // Display actor's image or a default picture
         alt={c?.name}
