@@ -45,7 +45,9 @@ function Genres({
           `https://api.themoviedb.org/3/genre/${type}/list?api_key=${API_KEY}&language=en-US`
         );
         setGenres(data.genres);
-      } catch (error) {}
+      } catch (error) {
+        console.error("Error fetching genres:", error);
+      }
     };
     fetchGenres();
   }, [type, setGenres]);
