@@ -97,31 +97,27 @@ function Search() {
       />
 
       {/* Display search results */}
-      {!searchResults ? (
-        <h2>No results were found.</h2>
-      ) : (
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "space-around",
-            paddingBottom: "10px",
-          }}
-          className="movie"
-        >
-          {searchResults.map((result) => (
-            <SingleContent
-              key={result.id}
-              id={result.id}
-              poster={result.poster_path}
-              title={result.title || result.name}
-              date={result.release_date || result.first_air_date}
-              media_type={result.media_type}
-              vote_average={result.vote_average}
-            />
-          ))}
-        </div>
-      )}
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "space-around",
+          paddingBottom: "10px",
+        }}
+        className="movie"
+      >
+        {searchResults.map((result) => (
+          <SingleContent
+            key={result.id}
+            id={result.id}
+            poster={result.poster_path}
+            title={result.title || result.name}
+            date={result.release_date || result.first_air_date}
+            media_type={result.media_type}
+            vote_average={result.vote_average}
+          />
+        ))}
+      </div>
 
       {/* Display "No results found" message */}
       {searchResults.length === 0 && searchTerm.trim() !== "" && (
