@@ -7,7 +7,7 @@ import CustomPagination from "../../components/Pagination/CustomPagination";
 function Trending() {
   const [page, setPage] = useState(1);
   const [trendingMovies, setTrendingMovies] = useState([]);
-  const [numOfPages, setNumOfPages] = useState();
+  const [numOfPages, setNumOfPages] = useState(0);
   const API_KEY = process.env.REACT_APP_API_KEY;
 
   useEffect(() => {
@@ -18,6 +18,7 @@ function Trending() {
           `https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}&page=${page}`
         );
         setTrendingMovies(response.data.results);
+        setNumOfPages(response.data.total_pages);
       } catch (error) {
         console.error("Error fetching trending movies:", error);
       }
@@ -43,7 +44,9 @@ function Trending() {
           />
         ))}
       </div>
-      <CustomPagination setPage={setPage} numOfPages={numOfPages} />
+      {numOfPages > 1 && (
+        <CustomPagination setPage={setPage} numOfPages={numOfPages} />
+      )}
     </div>
   );
 }
