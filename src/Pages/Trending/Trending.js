@@ -27,11 +27,17 @@ function Trending() {
     fetchTrending();
   }, [page]);
 
+  // The trending/all endpoint also returns people, who have no poster,
+  // release date or rating to show on a card.
+  const trendingTitles = trendingMovies.filter(
+    (item) => item.media_type !== "person"
+  );
+
   return (
     <div>
       <span className="pageTitle">Trending Movies</span>
       <div className="trending">
-        {trendingMovies.map((movie) => (
+        {trendingTitles.map((movie) => (
           <SingleContent
             key={movie.id}
             id={movie.id}
