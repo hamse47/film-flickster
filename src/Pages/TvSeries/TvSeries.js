@@ -33,43 +33,39 @@ function TvSeries() {
 
   return (
     <div>
-      <span className="pageTitle">
-        <div>
-          <span className="pageTitle">TV series</span>
-          <Genres
-            type="tv"
-            selectedGenres={selectedGenres}
-            setSelectedGenres={setSelectedGenres}
-            genres={genres}
-            setGenres={setGenres}
-            setPage={setPage}
+      <span className="pageTitle">TV series</span>
+      <Genres
+        type="tv"
+        selectedGenres={selectedGenres}
+        setSelectedGenres={setSelectedGenres}
+        genres={genres}
+        setGenres={setGenres}
+        setPage={setPage}
+      />
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "space-around",
+          paddingBottom: "10px",
+        }}
+        className="tv"
+      >
+        {tv.map((tv) => (
+          <SingleContent
+            key={tv.id}
+            id={tv.id}
+            poster={tv.poster_path}
+            title={tv.title || tv.name}
+            date={tv.release_date || tv.first_air_date}
+            media_type="tv"
+            vote_average={tv.vote_average}
           />
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "space-around",
-              paddingBottom: "10px",
-            }}
-            className="tv"
-          >
-            {tv.map((tv) => (
-              <SingleContent
-                key={tv.id}
-                id={tv.id}
-                poster={tv.poster_path}
-                title={tv.title || tv.name}
-                date={tv.release_date || tv.first_air_date}
-                media_type="tv"
-                vote_average={tv.vote_average}
-              />
-            ))}
-          </div>
-          {numOfPages > 1 && (
-            <CustomPagination setPage={setPage} numOfPages={numOfPages} />
-          )}
-        </div>
-      </span>
+        ))}
+      </div>
+      {numOfPages > 1 && (
+        <CustomPagination setPage={setPage} numOfPages={numOfPages} />
+      )}
     </div>
   );
 }
