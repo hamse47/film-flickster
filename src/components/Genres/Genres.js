@@ -27,6 +27,8 @@ function Genres({
       updatedGenres.splice(index, 1);
       setSelectedGenres(updatedGenres);
     }
+    // The filtered result set changes, so go back to the first page
+    setPage(1);
   };
 
   // Function to handle when the delete icon on a genre chip is clicked
@@ -36,6 +38,8 @@ function Genres({
       (selectedGenre) => selectedGenre.id !== genre.id
     );
     setSelectedGenres(updatedGenres);
+    // The filtered result set changes, so go back to the first page
+    setPage(1);
   };
 
   useEffect(() => {
