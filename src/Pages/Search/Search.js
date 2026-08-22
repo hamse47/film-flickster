@@ -32,7 +32,9 @@ function Search() {
 
         // Fetch search results from the API
         const response = await axios.get(
-          `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&query=${searchTerm}&page=${page}`
+          `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&query=${encodeURIComponent(
+            searchTerm
+          )}&page=${page}`
         );
 
         // Check if the response status is 404 (Not Found)
