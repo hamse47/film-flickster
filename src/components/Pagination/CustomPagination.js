@@ -1,6 +1,9 @@
 import React from "react";
 import { Pagination } from "@mui/material";
 
+// TMDB rejects any request for a page above 500, so never offer more than that.
+const MAX_TMDB_PAGE = 500;
+
 const CustomPagination = ({ setPage, numOfPages = 10 }) => {
   const handlePageChange = (page) => {
     setPage(page);
@@ -20,7 +23,7 @@ const CustomPagination = ({ setPage, numOfPages = 10 }) => {
     >
       <Pagination
         onChange={(event, page) => handlePageChange(page)}
-        count={numOfPages}
+        count={Math.min(numOfPages, MAX_TMDB_PAGE)}
         color="primary"
       />
     </div>
