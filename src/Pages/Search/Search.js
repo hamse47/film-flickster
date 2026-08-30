@@ -19,6 +19,11 @@ function Search() {
   // State to store a reference to the timer
   const [searchTimer, setSearchTimer] = useState(null);
 
+  // Go back to the first page whenever a new search term is entered
+  useEffect(() => {
+    setPage(1);
+  }, [searchTerm]);
+
   useEffect(() => {
     // Function to fetch search results when the search term or page changes
     const fetchSearchResults = async () => {
