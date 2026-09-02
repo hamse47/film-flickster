@@ -74,11 +74,16 @@ export default function ContentModal({ children, media_type, id }) {
     }
   };
 
-  // Use the 'useEffect' hook to run 'fetchData' and 'fetchVideo' once when the component mounts
+  // Fetch the content details once when the component mounts
   useEffect(() => {
     fetchData();
-    fetchVideo();
   }, []);
+
+  // Fetch the trailer key only after 'content' has arrived — 'fetchVideo' is a
+  // no-op while 'content' is still undefined
+  useEffect(() => {
+    fetchVideo();
+  }, [content]);
 
   return (
     <>
