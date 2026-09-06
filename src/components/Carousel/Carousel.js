@@ -43,10 +43,14 @@ const Carousel = ({ id, media_type }) => {
 
   // Function to fetch cast/credits data from an API
   const fetchCredits = async () => {
-    const { data } = await axios.get(
-      `https://api.themoviedb.org/3/${media_type}/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
-    );
-    setCredits(data.cast); // Update the 'credits' state with cast data
+    try {
+      const { data } = await axios.get(
+        `https://api.themoviedb.org/3/${media_type}/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+      );
+      setCredits(data.cast || []); // Update the 'credits' state with cast data
+    } catch (error) {
+      console.error("Error fetching credits:", error); // Keep the carousel empty if the request fails
+    }
   };
 
   // Use the 'useEffect' hook to run 'fetchCredits' once when the component mounts
