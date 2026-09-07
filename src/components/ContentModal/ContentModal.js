@@ -51,11 +51,16 @@ export default function ContentModal({ children, media_type, id }) {
 
   // Function to fetch content data from an API
   const fetchData = async () => {
-    const { data } = await axios.get(
-      `https://api.themoviedb.org/3/${media_type}/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
-    );
+    try {
+      const { data } = await axios.get(
+        `https://api.themoviedb.org/3/${media_type}/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+      );
 
-    setContent(data); // Update the 'content' state with fetched data
+      setContent(data); // Update the 'content' state with fetched data
+    } catch (error) {
+      // Leave 'content' unset so the modal simply stays empty for this item
+      console.error("Error fetching content details:", error);
+    }
   };
 
   // Function to fetch video data from an API
