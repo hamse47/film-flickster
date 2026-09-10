@@ -7,6 +7,10 @@ import ContentModal from "../ContentModal/ContentModal"; // Import ContentModal 
 
 // Define the SingleContent component, which represents a single media content item
 function SingleContent({ id, poster, title, date, media_type, vote_average }) {
+  // TMDB returns ratings with several decimal places, so round for display
+  const rating =
+    vote_average == null ? vote_average : Number(vote_average).toFixed(1);
+
   return (
     // Wrap the content in a ContentModal component for displaying details in a modal
     <ContentModal media_type={media_type} id={id}>
@@ -14,7 +18,7 @@ function SingleContent({ id, poster, title, date, media_type, vote_average }) {
         {/* Display a badge showing the vote average */}
         <Badge
           className="MuiBadge-badge"
-          badgeContent={vote_average}
+          badgeContent={rating}
           color={
             vote_average > 6
               ? "success"
