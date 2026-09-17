@@ -12,6 +12,7 @@ function Movie() {
   const [numOfPages, setNumOfPages] = useState(0); // State variable for the total number of pages
   const [selectedGenres, setSelectedGenres] = useState([]); // State variable for selected genres
   const [genres, setGenres] = useState([]); // State variable for all available genres
+  const [loading, setLoading] = useState(true); // True until the first fetch has finished
 
   // Function to fetch movie data based on selected genres and page
   const fetchMovies = async () => {
@@ -26,6 +27,8 @@ function Movie() {
       setNumOfPages(data.total_pages); // Update the 'numOfPages' state with the total number of pages
     } catch (error) {
       console.error("Error fetching movies:", error); // Handle errors while fetching movies
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -69,6 +72,10 @@ function Movie() {
           />
         ))}
       </div>
+      {/* Show a message when the fetch returned no movies */}
+      {!loading && movie.length === 0 && (
+        <h2 style={{ textAlign: "center" }}>No movies were found.</h2>
+      )}
       {/* Display pagination if there are multiple pages of results */}
       {numOfPages > 1 && (
         <CustomPagination setPage={setPage} numOfPages={numOfPages} />
