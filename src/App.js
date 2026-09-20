@@ -17,7 +17,8 @@ function App() {
         {/* Display the Header component at the top */}
         <Header />
       </div>
-      <Container>
+      {/* Bottom padding keeps content clear of the fixed bottom navigation */}
+      <Container sx={{ pb: 10 }}>
         {/* Define routing for different pages */}
         <Routes>
           <Route path="/" element={<Trending />} />{" "}
