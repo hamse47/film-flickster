@@ -37,6 +37,8 @@ export default function SimpleBottomNavigation() {
 
   return (
     <Box
+      component="nav"
+      aria-label="Main navigation"
       sx={{
         width: "100%",
         position: "fixed",
